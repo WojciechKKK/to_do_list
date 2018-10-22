@@ -1,4 +1,5 @@
-## My ToDo List - Table of contents
+# My ToDo List - project in React
+## Table of contents
 * [General info](#general-info)
 * [Technologies](#technologies)
 * [Setup](#setup)
