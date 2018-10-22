@@ -13,11 +13,7 @@ Project is created with:
 * Webpack
 	
 ## Setup
-To run this project, install it locally using npm:
+To run this project, use below link:
 
-```
-$ npm install
-$ npm start
-```
-Link: 
 https://wojciechkkk.github.io/to_do_list/
+
