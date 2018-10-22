@@ -21,7 +21,7 @@ class NewToDoForm extends Component{
     }
     render(){
         return (
-            <div>
+            <footer>
                 <input 
                     onKeyPress={this.newEnterAddElement}  //event na 'enter'
                     className="textInput" //style
@@ -34,7 +34,7 @@ class NewToDoForm extends Component{
                 <button className="button" onClick={this.newAddElement} title="Press Enter or click here">
                     +
                 </button>
-            </div>
+            </footer>
         )
     }
 }
