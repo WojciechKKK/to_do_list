@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 12);
+/******/ 	return __webpack_require__(__webpack_require__.s = 14);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -261,9 +261,9 @@ process.umask = function() { return 0; };
 /* WEBPACK VAR INJECTION */(function(process) {
 
 if (process.env.NODE_ENV === 'production') {
-  module.exports = __webpack_require__(15);
-} else {
   module.exports = __webpack_require__(16);
+} else {
+  module.exports = __webpack_require__(17);
 }
 
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
@@ -496,6 +496,52 @@ module.exports = emptyObject;
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(process) {
+
+function checkDCE() {
+  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
+  if (
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
+    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
+  ) {
+    return;
+  }
+  if (process.env.NODE_ENV !== 'production') {
+    // This branch is unreachable because this function is only called
+    // in production, but the condition is true only in development.
+    // Therefore if the branch is still here, dead code elimination wasn't
+    // properly applied.
+    // Don't change the message. React DevTools relies on it. Also make sure
+    // this message doesn't occur elsewhere in this function, or it will cause
+    // a false positive.
+    throw new Error('^_^');
+  }
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
+}
+
+if (process.env.NODE_ENV === 'production') {
+  // DCE check should happen before ReactDOM bundle executes so that
+  // DevTools can report bad minification during injection.
+  checkDCE();
+  module.exports = __webpack_require__(15);
+} else {
+  module.exports = __webpack_require__(21);
+}
+
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
 /* WEBPACK VAR INJECTION */(function(process) {/**
  * Copyright (c) 2014-present, Facebook, Inc.
  *
@@ -561,7 +607,7 @@ module.exports = warning;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -577,7 +623,7 @@ module.exports = warning;
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
-  var ReactPropTypesSecret = __webpack_require__(17);
+  var ReactPropTypesSecret = __webpack_require__(18);
   var loggedTypeFailures = {};
 
   printWarning = function(text) {
@@ -660,7 +706,7 @@ module.exports = checkPropTypes;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -699,7 +745,7 @@ var ExecutionEnvironment = {
 module.exports = ExecutionEnvironment;
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -741,7 +787,7 @@ function getActiveElement(doc) /*?DOMElement*/{
 module.exports = getActiveElement;
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -812,7 +858,7 @@ function shallowEqual(objA, objB) {
 module.exports = shallowEqual;
 
 /***/ }),
-/* 11 */
+/* 12 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -827,7 +873,7 @@ module.exports = shallowEqual;
  * 
  */
 
-var isTextNode = __webpack_require__(18);
+var isTextNode = __webpack_require__(19);
 
 /*eslint-disable no-bitwise */
 
@@ -855,13 +901,80 @@ function containsNode(outerNode, innerNode) {
 module.exports = containsNode;
 
 /***/ }),
-/* 12 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _reactDom = __webpack_require__(13);
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(6);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var styleBtn = {
+    color: 'red',
+    textAlign: 'center'
+};
+
+var DeleteBtn = function (_Component) {
+    _inherits(DeleteBtn, _Component);
+
+    function DeleteBtn(props) {
+        _classCallCheck(this, DeleteBtn);
+
+        var _this = _possibleConstructorReturn(this, (DeleteBtn.__proto__ || Object.getPrototypeOf(DeleteBtn)).call(this, props));
+
+        _this.deleteAllTask = function () {
+            if (typeof _this.props.fnD == 'function') {
+                _this.props.fnD();
+            }
+        };
+
+        return _this;
+    }
+
+    _createClass(DeleteBtn, [{
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                { style: styleBtn, title: 'Delete all tasks', onClick: this.deleteAllTask },
+                'Delete list'
+            );
+        }
+    }]);
+
+    return DeleteBtn;
+}(_react.Component);
+
+exports.default = DeleteBtn;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _reactDom = __webpack_require__(6);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
@@ -869,15 +982,17 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-__webpack_require__(25);
+__webpack_require__(26);
 
-var _ToDoList = __webpack_require__(30);
+var _ToDoList = __webpack_require__(31);
 
 var _ToDoList2 = _interopRequireDefault(_ToDoList);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var myTask = [{ name: 'task 1', done: false }, { name: 'task 2', done: false }, { name: 'task 3' }];
+console.log(_ToDoList.name);
+
+var myTask = [{ name: 'task 1', done: false }, { name: 'task 2', done: true }, { name: 'task 3' }];
 
 var myTitle = 'My ToDo List';
 
@@ -888,53 +1003,7 @@ var App = function App() {
 _reactDom2.default.render(_react2.default.createElement(App, null), document.getElementById('app'));
 
 /***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-/* WEBPACK VAR INJECTION */(function(process) {
-
-function checkDCE() {
-  /* global __REACT_DEVTOOLS_GLOBAL_HOOK__ */
-  if (
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ === 'undefined' ||
-    typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE !== 'function'
-  ) {
-    return;
-  }
-  if (process.env.NODE_ENV !== 'production') {
-    // This branch is unreachable because this function is only called
-    // in production, but the condition is true only in development.
-    // Therefore if the branch is still here, dead code elimination wasn't
-    // properly applied.
-    // Don't change the message. React DevTools relies on it. Also make sure
-    // this message doesn't occur elsewhere in this function, or it will cause
-    // a false positive.
-    throw new Error('^_^');
-  }
-  try {
-    // Verify that the code above has been dead code eliminated (DCE'd).
-    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
-  } catch (err) {
-    // DevTools shouldn't crash React, no matter what.
-    // We should still report in case we break this code.
-    console.error(err);
-  }
-}
-
-if (process.env.NODE_ENV === 'production') {
-  // DCE check should happen before ReactDOM bundle executes so that
-  // DevTools can report bad minification during injection.
-  checkDCE();
-  module.exports = __webpack_require__(14);
-} else {
-  module.exports = __webpack_require__(20);
-}
-
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
-
-/***/ }),
-/* 14 */
+/* 15 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -950,7 +1019,7 @@ if (process.env.NODE_ENV === 'production') {
 /*
  Modernizr 3.0.0pre (Custom Build) | MIT
 */
-var aa=__webpack_require__(3),ba=__webpack_require__(1),m=__webpack_require__(8),p=__webpack_require__(4),v=__webpack_require__(2),da=__webpack_require__(9),ea=__webpack_require__(10),fa=__webpack_require__(11),ha=__webpack_require__(5);
+var aa=__webpack_require__(3),ba=__webpack_require__(1),m=__webpack_require__(9),p=__webpack_require__(4),v=__webpack_require__(2),da=__webpack_require__(10),ea=__webpack_require__(11),fa=__webpack_require__(12),ha=__webpack_require__(5);
 function A(a){for(var b=arguments.length-1,c="https://reactjs.org/docs/error-decoder.html?invariant="+a,d=0;d<b;d++)c+="&args[]="+encodeURIComponent(arguments[d+1]);aa(!1,"Minified React error #"+a+"; visit %s for the full message or use the non-minified dev environment for full errors and additional helpful warnings. ",c)}ba?void 0:A("227");
 function ia(a,b,c,d,e,f,g,h,k){this._hasCaughtError=!1;this._caughtError=null;var n=Array.prototype.slice.call(arguments,3);try{b.apply(c,n)}catch(r){this._caughtError=r,this._hasCaughtError=!0}}
 var B={_caughtError:null,_hasCaughtError:!1,_rethrowError:null,_hasRethrowError:!1,invokeGuardedCallback:function(a,b,c,d,e,f,g,h,k){ia.apply(B,arguments)},invokeGuardedCallbackAndCatchFirstError:function(a,b,c,d,e,f,g,h,k){B.invokeGuardedCallback.apply(this,arguments);if(B.hasCaughtError()){var n=B.clearCaughtError();B._hasRethrowError||(B._hasRethrowError=!0,B._rethrowError=n)}},rethrowCaughtError:function(){return ka.apply(B,arguments)},hasCaughtError:function(){return B._hasCaughtError},clearCaughtError:function(){if(B._hasCaughtError){var a=
@@ -1181,7 +1250,7 @@ var Ai={default:vi},Bi=Ai&&vi||Ai;module.exports=Bi.default?Bi.default:Bi;
 
 
 /***/ }),
-/* 15 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1210,7 +1279,7 @@ assign:k}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default?Z.default:Z;
 
 
 /***/ }),
-/* 16 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -1234,9 +1303,9 @@ if (process.env.NODE_ENV !== "production") {
 var _assign = __webpack_require__(4);
 var invariant = __webpack_require__(3);
 var emptyObject = __webpack_require__(5);
-var warning = __webpack_require__(6);
+var warning = __webpack_require__(7);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(7);
+var checkPropTypes = __webpack_require__(8);
 
 // TODO: this is special because it gets imported during build.
 
@@ -2704,7 +2773,7 @@ module.exports = react;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 17 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2723,7 +2792,7 @@ module.exports = ReactPropTypesSecret;
 
 
 /***/ }),
-/* 18 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2738,7 +2807,7 @@ module.exports = ReactPropTypesSecret;
  * @typechecks
  */
 
-var isNode = __webpack_require__(19);
+var isNode = __webpack_require__(20);
 
 /**
  * @param {*} object The object to check.
@@ -2751,7 +2820,7 @@ function isTextNode(object) {
 module.exports = isTextNode;
 
 /***/ }),
-/* 19 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2779,7 +2848,7 @@ function isNode(object) {
 module.exports = isNode;
 
 /***/ }),
-/* 20 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -2802,17 +2871,17 @@ if (process.env.NODE_ENV !== "production") {
 
 var invariant = __webpack_require__(3);
 var React = __webpack_require__(1);
-var warning = __webpack_require__(6);
-var ExecutionEnvironment = __webpack_require__(8);
+var warning = __webpack_require__(7);
+var ExecutionEnvironment = __webpack_require__(9);
 var _assign = __webpack_require__(4);
 var emptyFunction = __webpack_require__(2);
-var checkPropTypes = __webpack_require__(7);
-var getActiveElement = __webpack_require__(9);
-var shallowEqual = __webpack_require__(10);
-var containsNode = __webpack_require__(11);
+var checkPropTypes = __webpack_require__(8);
+var getActiveElement = __webpack_require__(10);
+var shallowEqual = __webpack_require__(11);
+var containsNode = __webpack_require__(12);
 var emptyObject = __webpack_require__(5);
-var hyphenateStyleName = __webpack_require__(21);
-var camelizeStyleName = __webpack_require__(23);
+var hyphenateStyleName = __webpack_require__(22);
+var camelizeStyleName = __webpack_require__(24);
 
 // Relying on the `invariant()` implementation lets us
 // have preserve the format and params in the www builds.
@@ -20217,7 +20286,7 @@ module.exports = reactDom;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0)))
 
 /***/ }),
-/* 21 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20232,7 +20301,7 @@ module.exports = reactDom;
 
 
 
-var hyphenate = __webpack_require__(22);
+var hyphenate = __webpack_require__(23);
 
 var msPattern = /^ms-/;
 
@@ -20259,7 +20328,7 @@ function hyphenateStyleName(string) {
 module.exports = hyphenateStyleName;
 
 /***/ }),
-/* 22 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20295,7 +20364,7 @@ function hyphenate(string) {
 module.exports = hyphenate;
 
 /***/ }),
-/* 23 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20310,7 +20379,7 @@ module.exports = hyphenate;
 
 
 
-var camelize = __webpack_require__(24);
+var camelize = __webpack_require__(25);
 
 var msPattern = /^-ms-/;
 
@@ -20338,7 +20407,7 @@ function camelizeStyleName(string) {
 module.exports = camelizeStyleName;
 
 /***/ }),
-/* 24 */
+/* 25 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -20373,11 +20442,11 @@ function camelize(string) {
 module.exports = camelize;
 
 /***/ }),
-/* 25 */
+/* 26 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(26);
+var content = __webpack_require__(27);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -20391,7 +20460,7 @@ var options = {"hmr":true}
 options.transform = transform
 options.insertInto = undefined;
 
-var update = __webpack_require__(28)(content, options);
+var update = __webpack_require__(29)(content, options);
 
 if(content.locals) module.exports = content.locals;
 
@@ -20423,21 +20492,21 @@ if(false) {
 }
 
 /***/ }),
-/* 26 */
+/* 27 */
 /***/ (function(module, exports, __webpack_require__) {
 
-exports = module.exports = __webpack_require__(27)(false);
+exports = module.exports = __webpack_require__(28)(false);
 // imports
 exports.push([module.i, "@import url(https://fonts.googleapis.com/css?family=Varela+Round);", ""]);
 
 // module
-exports.push([module.i, "body {\n  font-family: 'Varela Round', sans-serif;\n  background: #1f2427;\n  color: lime;\n  font-size: 20px;\n  /* text-align: center */\n}\n\n/* container */\n\n.document {\n  width: 400px;\n  background: #353c41;\n  padding: 10px;\n  border-radius: 10px;\n  margin: 0 auto;\n}\n\n/* elements done */\n\n.doneToDo {\n  color: grey;\n  text-decoration: line-through;\n}\n\n.textInput {\n  background: #1f2427;\n  color: #d3d4d6;\n  font-size: 1.1em;\n  display: inline-block;\n  width: 80%;\n  border: 0px;\n  padding: 10px 0;\n}\n\n.button {\n  background: #1f2427;\n  color: #00aeff;\n  border: 0px;\n  font-size: 1.1em;\n  display: inline-block;\n  width: 20%;\n  cursor: pointer;\n  padding: 10px 0;\n}\n\n/* all divs with paragraph */\n\ndiv.document > div {\n  word-wrap: break-word;\n  background: #4b5963;\n  margin: 10px 0 0 0;\n  border-radius: 10px;\n  cursor: pointer;\n}\n\np {\n  margin: 0;\n  padding: 15px;\n}\n\n/* header */\n\nh1 {\n  text-align: center;\n  color: #ffff;\n}\n\nfooter {\n  margin-top: 10px;\n}", ""]);
+exports.push([module.i, "body {\n  font-family: 'Varela Round', sans-serif;\n  background: #1f2427;\n  color: lime;\n  font-size: 20px;\n  /* text-align: center */\n}\n\n/* container */\n\n.document {\n  width: 400px;\n  background: #353c41;\n  padding: 10px;\n  border-radius: 10px;\n  margin: 0 auto;\n}\n\n/* elements done */\n\n.doneToDo {\n  color: grey;\n  text-decoration: line-through;\n}\n\n.textInput {\n  background: #1f2427;\n  color: #d3d4d6;\n  font-size: 1.1em;\n  display: inline-block;\n  width: 80%;\n  border: 0;\n  padding: 10px 0;\n}\n\n.button {\n  background: #1f2427;\n  color: #00aeff;\n  border: 0px;\n  font-size: 1.1em;\n  display: inline-block;\n  width: 20%;\n  cursor: pointer;\n  padding: 10px 0;\n}\n\n/* all divs with paragraph */\n\ndiv.document > div {\n  word-wrap: break-word;\n  background: #4b5963;\n  margin: 10px 0 0 0;\n  border-radius: 10px;\n  cursor: pointer;\n}\n\np {\n  margin: 0;\n  padding: 15px;\n}\n\n/* header */\n\nh1 {\n  text-align: center;\n  color: #ffff;\n}\n\nfooter {\n  margin-top: 10px;\n}", ""]);
 
 // exports
 
 
 /***/ }),
-/* 27 */
+/* 28 */
 /***/ (function(module, exports) {
 
 /*
@@ -20519,7 +20588,7 @@ function toComment(sourceMap) {
 
 
 /***/ }),
-/* 28 */
+/* 29 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -20585,7 +20654,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(29);
+var	fixUrls = __webpack_require__(30);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -20905,7 +20974,7 @@ function updateLink (link, options, obj) {
 
 
 /***/ }),
-/* 29 */
+/* 30 */
 /***/ (function(module, exports) {
 
 
@@ -21000,7 +21069,7 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21016,13 +21085,17 @@ var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _ToDoItem = __webpack_require__(31);
+var _ToDoItem = __webpack_require__(32);
 
 var _ToDoItem2 = _interopRequireDefault(_ToDoItem);
 
-var _NewToDoForm = __webpack_require__(32);
+var _NewToDoForm = __webpack_require__(33);
 
 var _NewToDoForm2 = _interopRequireDefault(_NewToDoForm);
+
+var _DeleteBtn = __webpack_require__(13);
+
+var _DeleteBtn2 = _interopRequireDefault(_DeleteBtn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21039,6 +21112,12 @@ var ToDoList = function (_Component) {
     _classCallCheck(this, ToDoList);
 
     var _this = _possibleConstructorReturn(this, (ToDoList.__proto__ || Object.getPrototypeOf(ToDoList)).call(this, props));
+
+    _this.deleteState = function () {
+      _this.setState({
+        tasks: []
+      });
+    };
 
     _this.addToState = function (e) {
       _this.setState({
@@ -21089,6 +21168,7 @@ var ToDoList = function (_Component) {
         tasks.map(function (e, index) {
           return _react2.default.createElement(_ToDoItem2.default, { key: index, element: e.name, done: e.done });
         }),
+        _react2.default.createElement(_DeleteBtn2.default, { fnD: this.deleteState }),
         _react2.default.createElement(_NewToDoForm2.default, {
           fnI: this.addToState,
           val: element,
@@ -21104,7 +21184,7 @@ var ToDoList = function (_Component) {
 exports.default = ToDoList;
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21174,7 +21254,7 @@ ToDoItem.defaultProps = {
 exports.default = ToDoItem;
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -21189,6 +21269,10 @@ var _createClass = function () { function defineProperties(target, props) { for 
 var _react = __webpack_require__(1);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _DeleteBtn = __webpack_require__(13);
+
+var _DeleteBtn2 = _interopRequireDefault(_DeleteBtn);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21230,6 +21314,7 @@ var NewToDoForm = function (_Component) {
     _createClass(NewToDoForm, [{
         key: 'render',
         value: function render() {
+            var a = new Date();
             return _react2.default.createElement(
                 'footer',
                 null,
